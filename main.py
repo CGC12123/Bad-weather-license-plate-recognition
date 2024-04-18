@@ -110,7 +110,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return cv2.cvtColor(restored_img, cv2.COLOR_RGB2BGR), ori_img, result_str
 
     def load_img(self):
-        filt_path = QFileDialog.getOpenFileName(self, dir="imgs", filter="*.png; *.jpg; *.jpeg")
+        filt_path = QFileDialog.getOpenFileName(self, dir="./", filter="*.png; *.jpg; *.jpeg")
         if filt_path[0]:
             self.info.setText('已读取图像')
             self.filt_path = filt_path[0]
@@ -130,7 +130,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def save(self):
         if self.output2:
-            file_name, _ = QFileDialog.getSaveFileName(self, "save_result", "./out", "Image Files (*.png *.jpg *.bmp)")
+            file_name, _ = QFileDialog.getSaveFileName(self, "save_result", "./", "Image Files (*.png *.jpg *.bmp)")
             if file_name:
                 cv2.imwrite(file_name, self.ori_img)
                 self.info.setText(f'已保存至{file_name}')

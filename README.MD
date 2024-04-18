@@ -7,6 +7,35 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+### 权重文件下载
+| Models | S | L |
+|:-----: | :-----: | :-----: |
+| 去雨 | [Baidu Netdisk](https://pan.baidu.com/s/1BuJpzvzLlyN0iZQXMB6kfQ?pwd=6bsa) (6bsa) | [Baidu Netdisk](https://pan.baidu.com/s/1BuJpzvzLlyN0iZQXMB6kfQ?pwd=6bsa) (6bsa) |
+
+> 也可以使用 [NeRD-Rain](https://github.com/cschenxiang/NeRD-Rain.git) 中的权重文件
+
+| Models | plate_detect.pt | plate_rec.pth |
+|:-----: |:-----: | :-----: |
+| 车牌识别 |  [Baidu Netdisk](https://pan.baidu.com/s/1BuJpzvzLlyN0iZQXMB6kfQ?pwd=6bsa) (6bsa)  |  [Baidu Netdisk](https://pan.baidu.com/s/1BuJpzvzLlyN0iZQXMB6kfQ?pwd=6bsa) (6bsa)  |
+
+下载后放置于 `weights/` 中，使其看起来像
+```
+├───demo
+├───fonts
+├───images
+├───models
+├───plate_recognition
+├───result
+├───utils
+├───weights
+│   ├───nerd_self_l.pth
+│   ├───nerd_self_s.pth
+│   ├───plate_detect.pt
+│   ├───plate_rec.pth
+│───...
+```
+
+### 运行
 ```bash
 python main.py
 ```
@@ -36,4 +65,8 @@ url = {https://github.com/cschenxiang/NeRD-Rain.git}
   doi = {10.5281/zenodo.3908559},
   orcid = {0000-0001-5950-6979}
 }
+```
+
+```
+url = {https://github.com/we0091234/Chinese_license_plate_detection_recognition.git}
 ```
