@@ -32,13 +32,19 @@ result_dir = args.output_dir
 win = args.win_size
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
+
+##  model init
+# nerd
 model_restoration = MultiscaleNet()
 get_parameter_number(model_restoration)
 utils.load_checkpoint(model_restoration, args.nerd_weights)
-# print("===>Testing using weights: ",args.weights)
 model_restoration.cuda()
 model_restoration = nn.DataParallel(model_restoration)
 model_restoration.eval()
+# plate
+detect_model = load_model(args.plate_weights, device)  #初始化检测模型
+plate_rec_model = init_model(device, args.rec_model, is_color = args.is_color)
+# print("===>Testing using weights: ",args.weights)
 
 # dataset = args.dataset
 rgb_dir_test = args.input_dir
@@ -72,12 +78,7 @@ with torch.no_grad():
             utils.save_img(result_dir + '/result'+'.png', restored_img)
 
 # plate
-# img_path = result_dir + '/result'+'.png'
-# img =cv_imread(img_path)
-# img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
 restored_img = cv2.cvtColor(restored_img, cv2.COLOR_RGB2BGR)
-detect_model = load_model(args.plate_weights, device)  #初始化检测模型
-plate_rec_model = init_model(device, args.rec_model, is_color = args.is_color)
 
 total = sum(p.numel() for p in detect_model.parameters())
 total_1 = sum(p.numel() for p in plate_rec_model.parameters())
@@ -86,9 +87,6 @@ time_all = 0
 time_begin = time.time()
 time_b = time.time()
 
-# if restored_img.shape[-1] == 4:
-#     restored_img = cv2.cvtColor(restored_img, cv2.COLOR_BGRA2BGR)
-# detect_one(model,img_path,device)
 dict_list = detect_Recognition_plate(detect_model, restored_img, device, plate_rec_model, args.img_size, is_color=args.is_color)#检测以及识别车牌
 restored_img = np.ascontiguousarray(restored_img)
 ori_img, result_str = draw_result(restored_img, dict_list)
