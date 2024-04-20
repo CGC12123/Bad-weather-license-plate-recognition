@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch
+import torch.functional as F
 
 
 class myNet_ocr(nn.Module):

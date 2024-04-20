@@ -49,7 +49,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.bind_shots()
         # nerd
         self.model_restoration = MultiscaleNet()
-        get_parameter_number(self.model_restoration)
+        # get_parameter_number(self.model_restoration)
         utils.load_checkpoint(self.model_restoration, args.nerd_weights)
         self.model_restoration.cuda()
         self.model_restoration = nn.DataParallel(self.model_restoration)
