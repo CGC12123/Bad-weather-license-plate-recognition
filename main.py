@@ -16,6 +16,8 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QPixmap, QImage
 from main_ui import Ui_MainWindow
+import warnings
+warnings.filterwarnings("ignore")
 
 
 parser = argparse.ArgumentParser(description='Image Deraining')
