@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 
 
 parser = argparse.ArgumentParser(description='Image Deraining')
-parser.add_argument('--input_dir', default='imgs/input/rain_effct_result.jpg', type=str, help='Directory of validation images')
+parser.add_argument('--input_dir', default='imgs/input/rain1.jpg', type=str, help='Directory of validation images')
 parser.add_argument('--output_dir', default='imgs/output', type=str, help='Directory of validation images')
 parser.add_argument('--nerd_weights', default='weights/nerd_self_s.pth', type=str, help='Path to weights') 
 parser.add_argument('--plate_weights', nargs='+', type=str, default='weights/plate_detect.pt', help='model.pt path(s)')  #检测模型
