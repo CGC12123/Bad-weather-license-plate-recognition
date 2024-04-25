@@ -103,7 +103,7 @@ torch
 torchaudio             
 torchvision            
 tqdm                  
-triton                
+# triton                
 typing_extensions     
 urllib3               
 warmup-scheduler      
@@ -111,3 +111,4 @@ Werkzeug
 wheel                 
 yacs              
 zipp         
+pyside6
